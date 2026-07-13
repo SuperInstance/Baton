@@ -4,15 +4,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "baton-handoff"
-version = "0.1.0"
+version = "0.2.0"
 description = "Generational handoff system for model lifecycle — the relay between sunset and egg"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [{name = "SuperInstance"}]
 requires-python = ">=3.10"
-keywords = ["model-lifecycle", "generational-handoff", "sunset", "egg", "lineage"]
+keywords = ["model-lifecycle", "generational-handoff", "sunset", "egg", "lineage", "ai-ops"]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
@@ -26,6 +26,9 @@ classifiers = [
 Homepage = "https://github.com/SuperInstance/baton"
 Repository = "https://github.com/SuperInstance/baton"
 Issues = "https://github.com/SuperInstance/baton/issues"
+
+[project.scripts]
+baton = "baton.cli:main"
 
 [project.optional-dependencies]
 dev = ["pytest>=7.0", "pytest-cov"]
