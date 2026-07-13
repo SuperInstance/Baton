@@ -47,3 +47,4 @@ Thumbs.db
 .mypy_cache/
 .pyre/
 
+__pycache__/

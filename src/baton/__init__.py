@@ -19,6 +19,14 @@ from .validator import Validator, EnvironmentSnapshot
 from .bootstrap import BootstrapGenerator
 from .store import LineageStore
 
+# Optional lineage-tracker bridge
+try:
+    from .lineage_bridge import LineageBridge
+    HAS_LINEAGE_BRIDGE = True
+except ImportError:
+    LineageBridge = None  # type: ignore
+    HAS_LINEAGE_BRIDGE = False
+
 __version__ = "0.2.0"
 
 __all__ = [
@@ -35,6 +43,8 @@ __all__ = [
     "Distiller",
     "BootstrapGenerator",
     "LineageStore",
+    "LineageBridge",
+    "HAS_LINEAGE_BRIDGE",
 ]
 
 
