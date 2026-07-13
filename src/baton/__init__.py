@@ -19,12 +19,14 @@ from .validator import Validator, EnvironmentSnapshot
 from .bootstrap import BootstrapGenerator
 from .store import LineageStore
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 __all__ = [
     "Baton",
+    "AutoBaton",
     "HandoffBrief",
     "ValidatedBrief",
+    "HandoffReport",
     "Lesson",
     "LessonType",
     "ExpiryAssessment",
@@ -191,3 +193,14 @@ class Baton:
             A list of HandoffBriefs from most recent to oldest.
         """
         return self.store.trace_lineage(model_id)
+
+
+# Lazy import to avoid circular dependency at module load
+def __getattr__(name: str):
+    if name == "AutoBaton":
+        from .auto import AutoBaton
+        return AutoBaton
+    if name == "HandoffReport":
+        from .auto import HandoffReport
+        return HandoffReport
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
